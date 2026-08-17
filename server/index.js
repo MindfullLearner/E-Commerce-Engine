@@ -4,11 +4,13 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 
 const app = express();
+app.use(cors());
+app.use(express.json()); // lets us read JSON data sent from the frontend
+
 const authRoutes = require('./routes/auth');
 app.use('/api/auth', authRoutes);
 
-app.use(cors());
-app.use(express.json()); // lets us read JSON data sent from the frontend
+
 
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log('MongoDB connected'))
