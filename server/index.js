@@ -4,6 +4,8 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 
 const app = express();
+const authRoutes = require('./routes/auth');
+app.use('/api/auth', authRoutes);
 
 app.use(cors());
 app.use(express.json()); // lets us read JSON data sent from the frontend
