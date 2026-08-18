@@ -29,34 +29,34 @@ function Login() {
     }
   };
 
-  return (
-    <div>
-      <h2>Login</h2>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="email"
-          name="email"
-          placeholder="Email"
-          value={formData.email}
-          onChange={handleChange}
-          required
-        />
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          value={formData.password}
-          onChange={handleChange}
-          required
-        />
-        <button type="submit">Login</button>
-      </form>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-      <p>
-        Don't have an account? <Link to="/register">Register</Link>
-      </p>
-    </div>
-  );
+ return (
+  <div className="page">
+    <h2>Login</h2>
+    <form onSubmit={handleSubmit}>
+      <input
+        type="email"
+        name="email"
+        placeholder="Email"
+        value={formData.email}
+        onChange={handleChange}
+        required
+      />
+      <input
+        type="password"
+        name="password"
+        placeholder="Password"
+        value={formData.password}
+        onChange={handleChange}
+        required
+      />
+      <button type="submit">Login</button>
+    </form>
+    {error && <p className="error-text" style={{ maxWidth: '320px' }}>{error}</p>}
+    <p>
+      Don't have an account? <Link to="/register">Register</Link>
+    </p>
+  </div>
+);
 }
 
 export default Login;
