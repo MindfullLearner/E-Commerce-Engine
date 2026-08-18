@@ -16,6 +16,9 @@ app.use('/api/cart', cartRoutes);
 const checkoutRoutes = require('./routes/checkout');
 app.use('/api/checkout', checkoutRoutes);
 
+const productRoutes = require('./routes/products');
+app.use('/api/products', productRoutes);
+
 mongoose.connect(process.env.MONGO_URI)
   .then(() => {
     console.log('MongoDB connected');
