@@ -55,5 +55,49 @@ router.post('/create-payment-intent', authMiddleware, async (req, res) => {
     res.status(500).json({ message: 'Server error', error: error.message });
   }
 });
+// CONFIRM payment succeeded, then update inventory
+router.post('/confirm', authMiddleware, async (req, res) => {
+  try {
+    const { paymentIntentId } = req.body;
+
+    if (!paymentIntentId) {
+      return res.status(400).json({ message: 'Payment Intent ID is required' });
+    }
+
+    // Ask Stripe directly — don't trust the frontend's claim
+    const paymentIntent = await stripe.paymentIntents.retrieve(paymentIntentId);
+
+    if (paymentIntent.status !== 'succeeded') {
+      return res.status(400).json({ message: 'Payment not completed' });
+    }
+
+    // Extra safety: make sure this payment belongs to the logged-in user
+    if (paymentIntent.metadata.userId !== req.userId.toString()) {
+      return res.status(403).json({ message: 'This payment does not belong to you' });
+    }
+
+    // Get the user's cart with full product details
+    const cart = await Cart.findOne({ userId: req.userId }).populate('items.productId');
+
+    if (!cart || cart.items.length === 0) {
+      return res.status(400).json({ message: 'Cart is already empty' });
+    }
+
+    // Reduce stock for each product
+    for (const item of cart.items) {
+      const product = item.productId;
+      product.stock -= item.quantity;
+      await product.save();
+    }
+
+    // Clear the cart after successful checkout
+    cart.items = [];
+    await cart.save();
+
+    res.status(200).json({ message: 'Payment confirmed, inventory updated, cart cleared' });
+  } catch (error) {
+    res.status(500).json({ message: 'Server error', error: error.message });
+  }
+});
 
 module.exports = router;
