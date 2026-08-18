@@ -17,7 +17,10 @@ const checkoutRoutes = require('./routes/checkout');
 app.use('/api/checkout', checkoutRoutes);
 
 mongoose.connect(process.env.MONGO_URI)
-  .then(() => console.log('MongoDB connected'))
+  .then(() => {
+    console.log('MongoDB connected');
+    console.log('Connected to database:', mongoose.connection.name);
+  })
   .catch((err) => console.log(err));
 
 app.get('/', (req, res) => {
