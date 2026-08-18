@@ -368,3 +368,22 @@ input:-webkit-autofill:focus {
   transition: background-color 5000s ease-in-out 0s;
   caret-color: var(--text);
 }
+
+.skeleton-card {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 18px;
+}
+
+.skeleton-box {
+  background: linear-gradient(90deg, var(--surface-alt) 25%, #2a2a33 50%, var(--surface-alt) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s infinite;
+  border-radius: 6px;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}

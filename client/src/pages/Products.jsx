@@ -4,6 +4,7 @@ import { useAuth } from '../context/AuthContext';
 
 function Products() {
   const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [message, setMessage] = useState('');
   const { user } = useAuth();
 
@@ -49,31 +50,39 @@ function Products() {
           {message}
         </p>
       )}
-
       <div className="product-grid">
-        {products.map((product) => {
-          const lowStock = product.stock > 0 && product.stock <= 5;
-          const outOfStock = product.stock === 0;
+        {loading
+          ? Array.from({ length: 3 }).map((_, i) => (
+              <div key={i} className="skeleton-card">
+                <div className="skeleton-box" style={{ height: '150px', marginBottom: '12px' }} />
+                <div className="skeleton-box" style={{ height: '18px', width: '70%', marginBottom: '8px' }} />
+                <div className="skeleton-box" style={{ height: '13px', width: '90%', marginBottom: '14px' }} />
+                <div className="skeleton-box" style={{ height: '32px', width: '80px', marginBottom: '10px' }} />
+                <div className="skeleton-box" style={{ height: '38px' }} />
+              </div>
+            ))
+          : products.map((product) => {
+              const lowStock = product.stock > 0 && product.stock <= 5;
+              const outOfStock = product.stock === 0;
 
-          return (
-            <div key={product._id} className="product-card">
-              <img src={product.image} alt={product.name} />
-              <h3>{product.name}</h3>
-              <p className="desc">{product.description}</p>
-              <span className="price-chip">${product.price.toFixed(2)}</span>
-              <span className={`stock-tag ${lowStock ? 'low' : ''}`}>
-                {outOfStock ? 'OUT OF STOCK' : lowStock ? `ONLY ${product.stock} LEFT` : `${product.stock} IN STOCK`}
-              </span>
-              <button
-                onClick={() => handleAddToCart(product._id)}
-                disabled={outOfStock}
-              >
-                {outOfStock ? 'Unavailable' : 'Add to Cart'}
-              </button>
-            </div>
-          );
-        })}
+              return (
+                <div key={product._id} className="product-card">
+                  <img src={product.image} alt={product.name} />
+                  <h3>{product.name}</h3>
+                  <p className="desc">{product.description}</p>
+                  <span className="price-chip">${product.price.toFixed(2)}</span>
+                  <span className={`stock-tag ${lowStock ? 'low' : ''}`}>
+                    {outOfStock ? 'OUT OF STOCK' : lowStock ? `ONLY ${product.stock} LEFT` : `${product.stock} IN STOCK`}
+                  </span>
+                  <button onClick={() => handleAddToCart(product._id)} disabled={outOfStock}>
+                    {outOfStock ? 'Unavailable' : 'Add to Cart'}
+                  </button>
+                </div>
+              );
+            })}
       </div>
+
+      
     </div>
   );
 }
