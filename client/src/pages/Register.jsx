@@ -28,39 +28,47 @@ function Register() {
   };
 
 return (
-  <div className="page">
-    <h2>Register</h2>
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        name="name"
-        placeholder="Name"
-        value={formData.name}
-        onChange={handleChange}
-        required
-      />
-      <input
-        type="email"
-        name="email"
-        placeholder="Email"
-        value={formData.email}
-        onChange={handleChange}
-        required
-      />
-      <input
-        type="password"
-        name="password"
-        placeholder="Password"
-        value={formData.password}
-        onChange={handleChange}
-        required
-      />
-      <button type="submit">Register</button>
-    </form>
-    {error && <p className="error-text" style={{ maxWidth: '320px' }}>{error}</p>}
-    <p>
-      Already have an account? <Link to="/login">Login</Link>
-    </p>
+  <div className="page" style={{ display: 'flex', justifyContent: 'center', paddingTop: '80px' }}>
+    <div style={{ width: '100%', maxWidth: '380px' }}>
+      <div className="hero-eyebrow">// join volt</div>
+      <h1 style={{ fontSize: '32px', marginBottom: '30px' }}>Create your account</h1>
+
+      <form onSubmit={handleSubmit} style={{ maxWidth: '100%' }}>
+        <input
+          type="text"
+          name="name"
+          placeholder="Full name"
+          value={formData.name}
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="email"
+          name="email"
+          placeholder="Email"
+          value={formData.email}
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="password"
+          name="password"
+          placeholder="Password"
+          value={formData.password}
+          onChange={handleChange}
+          required
+        />
+        <button type="submit" style={{ width: '100%', padding: '13px', marginTop: '4px' }}>
+          Create Account
+        </button>
+      </form>
+
+      {error && <p className="error-text" style={{ marginTop: '14px' }}>{error}</p>}
+
+      <p style={{ marginTop: '24px', color: 'var(--text-muted)', fontSize: '14px' }}>
+        Already have an account? <Link to="/login">Log in</Link>
+      </p>
+    </div>
   </div>
 );
 }
