@@ -10,7 +10,8 @@ app.use(express.json()); // lets us read JSON data sent from the frontend
 const authRoutes = require('./routes/auth');
 app.use('/api/auth', authRoutes);
 
-
+const cartRoutes = require('./routes/cart');
+app.use('/api/cart', cartRoutes);
 
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log('MongoDB connected'))
