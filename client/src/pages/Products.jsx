@@ -37,28 +37,25 @@ function Products() {
   };
 
   return (
-    <div>
-      <h2>Products</h2>
-      {message && <p>{message}</p>}
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px' }}>
-        {products.map((product) => (
-          <div
-            key={product._id}
-            style={{ border: '1px solid #ccc', padding: '10px', width: '200px' }}
-          >
-            <img src={product.image} alt={product.name} style={{ width: '100%' }} />
-            <h3>{product.name}</h3>
-            <p>{product.description}</p>
-            <p>${product.price}</p>
-            <p>Stock: {product.stock}</p>
-            <button onClick={() => handleAddToCart(product._id)}>
-              Add to Cart
-            </button>
-          </div>
-        ))}
-      </div>
+  <div className="page">
+    <h2>Products</h2>
+    {message && <p className={message.includes('added') ? 'success-text' : 'error-text'}>{message}</p>}
+    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px', marginTop: '15px' }}>
+      {products.map((product) => (
+        <div key={product._id} className="product-card">
+          <img src={product.image} alt={product.name} />
+          <h3>{product.name}</h3>
+          <p>{product.description}</p>
+          <p>${product.price}</p>
+          <p>Stock: {product.stock}</p>
+          <button onClick={() => handleAddToCart(product._id)}>
+            Add to Cart
+          </button>
+        </div>
+      ))}
     </div>
-  );
+  </div>
+);
 }
 
 export default Products;
