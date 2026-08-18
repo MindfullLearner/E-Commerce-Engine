@@ -47,64 +47,47 @@ function Cart() {
     return sum + item.productId.price * item.quantity;
   }, 0);
 
-  return (
-    <div>
-      <h2>Your Cart</h2>
-      {message && <p style={{ color: 'red' }}>{message}</p>}
+return (
+  <div className="page">
+    <h2>Your Cart</h2>
+    {message && <p className="error-text">{message}</p>}
 
-      {cart.items.length === 0 ? (
-        <p>Your cart is empty. <Link to="/">Browse products</Link></p>
-      ) : (
-        <div>
-          {cart.items.map((item) => (
-            <div
-              key={item.productId._id}
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '15px',
-                padding: '10px 0',
-                borderBottom: '1px solid #444',
-              }}
-            >
-              <img
-                src={item.productId.image}
-                alt={item.productId.name}
-                style={{ width: '60px', height: '60px' }}
-              />
-              <div style={{ flex: 1 }}>
-                <h4>{item.productId.name}</h4>
-                <p>${item.productId.price} each</p>
-              </div>
-              <button
-                onClick={() =>
-                  handleUpdateQuantity(item.productId._id, item.quantity - 1)
-                }
-              >
-                -
-              </button>
-              <span>{item.quantity}</span>
-              <button
-                onClick={() =>
-                  handleUpdateQuantity(item.productId._id, item.quantity + 1)
-                }
-              >
-                +
-              </button>
-              <button onClick={() => handleRemove(item.productId._id)}>
-                Remove
-              </button>
+    {cart.items.length === 0 ? (
+      <p>Your cart is empty. <Link to="/">Browse products</Link></p>
+    ) : (
+      <div>
+        {cart.items.map((item) => (
+          <div key={item.productId._id} className="cart-item" style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
+            <img
+              src={item.productId.image}
+              alt={item.productId.name}
+              style={{ width: '60px', height: '60px' }}
+            />
+            <div style={{ flex: 1 }}>
+              <h4 style={{ margin: '0 0 5px' }}>{item.productId.name}</h4>
+              <p style={{ margin: 0, color: '#a1a1aa' }}>${item.productId.price} each</p>
             </div>
-          ))}
+            <button className="qty-btn" onClick={() => handleUpdateQuantity(item.productId._id, item.quantity - 1)}>
+              -
+            </button>
+            <span>{item.quantity}</span>
+            <button className="qty-btn" onClick={() => handleUpdateQuantity(item.productId._id, item.quantity + 1)}>
+              +
+            </button>
+            <button onClick={() => handleRemove(item.productId._id)} style={{ backgroundColor: '#7f1d1d' }}>
+              Remove
+            </button>
+          </div>
+        ))}
 
-          <h3>Total: ${total.toFixed(2)}</h3>
-          <Link to="/checkout">
-            <button>Proceed to Checkout</button>
-          </Link>
-        </div>
-      )}
-    </div>
-  );
+        <h3>Total: ${total.toFixed(2)}</h3>
+        <Link to="/checkout">
+          <button>Proceed to Checkout</button>
+        </Link>
+      </div>
+    )}
+  </div>
+);
 }
 
 export default Cart;
