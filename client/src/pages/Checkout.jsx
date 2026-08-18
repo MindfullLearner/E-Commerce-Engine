@@ -62,24 +62,30 @@ function Checkout() {
     setProcessing(false);
   };
 
-  if (success) {
-    return <p>Payment successful! Redirecting you to products...</p>;
-  }
-
+if (success) {
   return (
-    <div>
-      <h2>Checkout</h2>
-      {amount > 0 && <h3>Total: ${amount.toFixed(2)}</h3>}
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-
-      <form onSubmit={handleSubmit}>
-        <CardElement options={{ style: { base: { fontSize: '16px', color: '#fff' } } }} />
-        <button type="submit" disabled={!stripe || processing} style={{ marginTop: '15px' }}>
-          {processing ? 'Processing...' : 'Pay Now'}
-        </button>
-      </form>
+    <div className="page">
+      <p className="success-text">Payment successful! Redirecting you to products...</p>
     </div>
   );
+}
+
+return (
+  <div className="page">
+    <h2>Checkout</h2>
+    {amount > 0 && <h3>Total: ${amount.toFixed(2)}</h3>}
+    {error && <p className="error-text">{error}</p>}
+
+    <form onSubmit={handleSubmit} style={{ maxWidth: '400px' }}>
+      <div style={{ backgroundColor: '#1c1c24', border: '1px solid #3f3f46', borderRadius: '6px', padding: '12px' }}>
+        <CardElement options={{ style: { base: { fontSize: '16px', color: '#fff', '::placeholder': { color: '#71717a' } } } }} />
+      </div>
+      <button type="submit" disabled={!stripe || processing} style={{ marginTop: '15px' }}>
+        {processing ? 'Processing...' : 'Pay Now'}
+      </button>
+    </form>
+  </div>
+);
 }
 
 export default Checkout;
