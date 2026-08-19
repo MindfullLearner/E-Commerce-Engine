@@ -9,16 +9,18 @@ function Products() {
   const { user } = useAuth();
 
   useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const res = await api.get('/products');
-        setProducts(res.data);
-      } catch (err) {
-        console.error(err);
-      }
-    };
+  const fetchProducts = async () => {
+    try {
+      const res = await api.get('/products');
+      setProducts(res.data);
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
+  };
 
-    fetchProducts();
+  fetchProducts();
   }, []);
 
   const handleAddToCart = async (productId) => {

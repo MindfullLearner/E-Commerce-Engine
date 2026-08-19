@@ -22,6 +22,11 @@ const productSchema = new mongoose.Schema({
     type: String,
     default: '',
   },
+  category: {
+    type: String,
+    required: true,
+    default: 'Other',
+  },
 }, { timestamps: true });
 
 module.exports = mongoose.model('Product', productSchema);

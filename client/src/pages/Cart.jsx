@@ -47,7 +47,9 @@ function Cart() {
     );
   }
 
-  const total = cart.items.reduce((sum, item) => {
+  const validItems = cart.items.filter((item) => item.productId !== null);
+
+  const total = validItems.reduce((sum, item) => {
     return sum + item.productId.price * item.quantity;
   }, 0);
 
@@ -60,14 +62,14 @@ function Cart() {
 
       {message && <p className="error-text" style={{ marginBottom: '20px' }}>{message}</p>}
 
-      {cart.items.length === 0 ? (
+      {validItems.length === 0 ? (
         <div className="empty-state">
           <p style={{ fontSize: '16px', marginBottom: '10px' }}>Your cart is empty.</p>
           <Link to="/">Browse products →</Link>
         </div>
       ) : (
         <div>
-          {cart.items.map((item) => (
+          {validItems.map((item) => (
             <div key={item.productId._id} className="cart-item">
               <img src={item.productId.image} alt={item.productId.name} />
               <div className="info">

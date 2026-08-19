@@ -18,6 +18,7 @@ app.use('/api/checkout', checkoutRoutes);
 
 const productRoutes = require('./routes/products');
 app.use('/api/products', productRoutes);
+app.use('/images', express.static('public/images'));
 
 mongoose.connect(process.env.MONGO_URI)
   .then(() => {
