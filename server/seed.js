@@ -8,7 +8,7 @@ const sampleProducts = [
     description: 'Noise-cancelling over-ear headphones',
     price: 59.99,
     stock: 15,
-    image: 'http://localhost:5000/images/headphones.jpg',
+    image: 'https://e-commerce-engine.onrender.com/images/headphones.jpg',
     category: 'Audio',
   },
   {
@@ -16,7 +16,7 @@ const sampleProducts = [
     description: 'Compact stereo speakers with deep bass',
     price: 44.99,
     stock: 10,
-    image: 'http://localhost:5000/images/speakers.jpg',
+    image: 'https://e-commerce-engine.onrender.com/images/speakers.jpg',
     category: 'Audio',
   },
   {
@@ -24,7 +24,7 @@ const sampleProducts = [
     description: 'Studio-quality mic for streaming and calls',
     price: 69.99,
     stock: 6,
-    image: 'http://localhost:5000/images/microphone.jpg',
+    image: 'https://e-commerce-engine.onrender.com/images/microphone.jpg',
     category: 'Audio',
   },
   {
@@ -32,7 +32,7 @@ const sampleProducts = [
     description: 'RGB backlit mechanical keyboard',
     price: 89.99,
     stock: 8,
-    image: 'http://localhost:5000/images/keyboard.jpg',
+    image: 'https://e-commerce-engine.onrender.com/images/keyboard.jpg',
     category: 'Keyboards',
   },
   {
@@ -40,7 +40,7 @@ const sampleProducts = [
     description: 'Ergonomic mouse with silent clicks',
     price: 29.99,
     stock: 25,
-    image: 'http://localhost:5000/images/mouse.jpg',
+    image: 'https://e-commerce-engine.onrender.com/images/mouse.jpg',
     category: 'Keyboards',
   },
   {
@@ -48,7 +48,7 @@ const sampleProducts = [
     description: 'Extended desk mat with stitched edges',
     price: 14.99,
     stock: 30,
-    image: 'http://localhost:5000/images/mousepad.jpg',
+    image: 'https://e-commerce-engine.onrender.com/images/mousepad.jpg',
     category: 'Keyboards',
   },
   {
@@ -56,7 +56,7 @@ const sampleProducts = [
     description: '7-in-1 USB-C hub adapter',
     price: 24.99,
     stock: 20,
-    image: 'http://localhost:5000/images/usbhub.jpg',
+    image: 'https://e-commerce-engine.onrender.com/images/usbhub.jpg',
     category: 'Accessories',
   },
   {
@@ -64,7 +64,7 @@ const sampleProducts = [
     description: 'Adjustable aluminum laptop riser',
     price: 34.99,
     stock: 12,
-    image: 'http://localhost:5000/images/laptopstand.jpg',
+    image: 'https://e-commerce-engine.onrender.com/images/laptopstand.jpg',
     category: 'Accessories',
   },
   {
@@ -72,7 +72,7 @@ const sampleProducts = [
     description: '1080p webcam with built-in mic',
     price: 39.99,
     stock: 9,
-    image: 'http://localhost:5000/images/webcam.jpg',
+    image: 'https://e-commerce-engine.onrender.com/images/webcam.jpg',
     category: 'Accessories',
   },
   {
@@ -80,7 +80,7 @@ const sampleProducts = [
     description: '1TB external SSD, USB-C, 1050MB/s',
     price: 99.99,
     stock: 7,
-    image: 'http://localhost:5000/images/ssd.jpg',
+    image: 'https://e-commerce-engine.onrender.com/images/ssd.jpg',
     category: 'Storage',
   },
   {
@@ -88,7 +88,7 @@ const sampleProducts = [
     description: '27" 4K IPS monitor for coding and design',
     price: 279.99,
     stock: 4,
-    image: 'http://localhost:5000/images/monitor.jpg',
+    image: 'https://e-commerce-engine.onrender.com/images/monitor.jpg',
     category: 'Storage',
   },
   {
@@ -96,7 +96,7 @@ const sampleProducts = [
     description: 'Under-desk cable management tray',
     price: 12.99,
     stock: 40,
-    image: 'http://localhost:5000/images/cableorganizer.jpg',
+    image: 'https://e-commerce-engine.onrender.com/images/cableorganizer.jpg',
     category: 'Storage',
   },
 ];
