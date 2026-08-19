@@ -5,7 +5,7 @@ const cors = require('cors');
 
 const app = express();
 app.use(cors({
-  origin: 'https://e-commerce-engine.onrender.com',
+  origin: 'https://e-commerce-engine-sigma.vercel.app',
   credentials: true,
 }));
 app.use(express.json()); // lets us read JSON data sent from the frontend
