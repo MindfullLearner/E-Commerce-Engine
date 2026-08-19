@@ -43,8 +43,8 @@ function Products() {
     <div className="page">
       <div className="hero">
         <div className="hero-eyebrow">// full catalog</div>
-        <h1>Gear for how you build.</h1>
-        <p>Hand-picked hardware for developers — from your desk setup to your daily carry.</p>
+        <h1> Power your workflow.</h1>
+        <p>From noise-cancelling headphones to 4K displays — gear that keeps up with you.</p>
       </div>
 
       {message && (
