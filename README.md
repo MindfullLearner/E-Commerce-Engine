@@ -5,6 +5,7 @@ A secure, full-stack e-commerce web application built with the MERN stack, featu
 > Built as part of a full-stack development internship task — expanded into a portfolio-ready project.
 
 ---
+**🔗 Live Demo:** [E-Commerce Engine Demo](https://e-commerce-engine-sigma.vercel.app)
 
 ## Features
 
@@ -153,10 +154,7 @@ For all test cards: use any future expiry date, any 3-digit CVC, and any 5-digit
 - [ ] Product search and category filtering
 - [ ] Order history for logged-in users
 - [ ] Admin dashboard for managing products and stock
-- [ ] Deployment (Vercel for frontend, Render/Railway for backend)
 
 ---
 
-## License
 
-This project was built for educational and portfolio purposes.
